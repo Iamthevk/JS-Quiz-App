@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Game Page</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../resources/favicon.png" />
+    <!-- Font-awesome  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!-- Bootsrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles/game.css" />
+  </head>
+
+  <body>
+    <script>
+      // ---------Game Container -----------
+      let gameContainer = document.createElement("div");
+      gameContainer.setAttribute("class", "container");
+      document.body.append(gameContainer);
+
+      //----------Quiz Section--------------
+      let quizDiv = document.createElement("div");
+      quizDiv.setAttribute("id", "quiz");
+      gameContainer.appendChild(quizDiv);
+
+      //----------Head Section--------------
+      let headDiv = document.createElement("div");
+      headDiv.setAttribute("id", "head-section");
+      quizDiv.appendChild(headDiv);
+
+      // ----------head - div  item 1----------
+      let headDivItem1 = document.createElement("div");
+      headDivItem1.setAttribute("id", "head-section-item");
+      headDiv.appendChild(headDivItem1);
+
+      //----------questions-para----------
+      let quesPara = document.createElement("p");
+      quesPara.setAttribute("id", "progressText");
+      quesPara.setAttribute("class", "head-prefix");
+      headDivItem1.appendChild(quesPara);
+
+      //----------progress bar----------
+      let progressDiv = document.createElement("div");
+      progressDiv.setAttribute("id", "progress");
+      headDivItem1.appendChild(progressDiv);
+
+      let innerProgressDiv = document.createElement("div");
+      innerProgressDiv.setAttribute("id", "progress");
+      progressDiv.appendChild(innerProgressDiv);
+
+      let headItemTwo = document.createElement("div");
+      headItemTwo.setAttribute("id", "head-section-item");
+      headDiv.appendChild(headItemTwo);
+
+      //----------Score----------
+      let scoreHead = document.createElement("p");
+      scoreHead.setAttribute("class", "head,prefix");
+      scoreHead.innerText = "Score";
+      headItemTwo.appendChild(scoreHead);
+
+      //----------Score Value----------
+      let scoreValue = document.createElement("h1");
+      scoreValue.setAttribute("id", "score");
+      scoreValue.setAttribute("class", "head-section-text");
+      scoreValue.innerText = "0";
+      headItemTwo.appendChild(scoreValue);
+
+      //----------Main Quiz Section----------
+    </script>
+  </body>
+</html>
