@@ -75,6 +75,73 @@
       headItemTwo.appendChild(scoreValue);
 
       //----------Main Quiz Section----------
+      //Question
+      let questionHead = document.createElement("h1");
+      questionHead.setAttribute("id", "question");
+      quizDiv.appendChild(questionHead);
+
+      //-------Options-----------
+      //======choice 1======
+      let choice1 = document.createElement("div");
+      choice1.setAttribute("class", "choice-container");
+      quizDiv.appendChild(choice1);
+
+      let choice1para1 = document.createElement("p");
+      choice1para1.setAttribute("class", "choice-prefix");
+      choice1para1.innerText = "A";
+      choice1.appendChild(choice1para1);
+
+      let choice1para2 = document.createElement("p");
+      choice1para2.setAttribute("class", "choice-text");
+      choice1para2.setAttribute("data-number", "1");
+      choice1.appendChild(choice1para2);
+
+      //======choice 2======
+      let choice2 = document.createElement("div");
+      choice2.setAttribute("class", "choice-container");
+      quizDiv.appendChild(choice2);
+
+      let choice2para1 = document.createElement("p");
+      choice2para1.setAttribute("class", "choice-prefix");
+      choice2para1.innerText = "A";
+      choice2.appendChild(choice2para1);
+
+      let choice2para2 = document.createElement("p");
+      choice2para2.setAttribute("class", "choice-text");
+      choice2para2.setAttribute("data-number", "1");
+      choice2.appendChild(choice2para2);
+
+      //======choice 3======
+      let choice3 = document.createElement("div");
+      choice3.setAttribute("class", "choice-container");
+      quizDiv.appendChild(choice3);
+
+      let choice3para1 = document.createElement("p");
+      choice3para1.setAttribute("class", "choice-prefix");
+      choice3para1.innerText = "A";
+      choice3.appendChild(choice3para1);
+
+      let choice3para2 = document.createElement("p");
+      choice3para2.setAttribute("class", "choice-text");
+      choice3para2.setAttribute("data-number", "1");
+      choice3.appendChild(choice3para2);
+
+      //======choice 4======
+      let choice4 = document.createElement("div");
+      choice4.setAttribute("class", "choice-container");
+      quizDiv.appendChild(choice4);
+
+      let choice4para1 = document.createElement("p");
+      choice4para1.setAttribute("class", "choice-prefix");
+      choice4para1.innerText = "A";
+      choice4.appendChild(choice4para1);
+
+      let choice4para2 = document.createElement("p");
+      choice4para2.setAttribute("class", "choice-text");
+      choice4para2.setAttribute("data-number", "1");
+      choice4.appendChild(choice4para2);
     </script>
+    <!-- External Script -->
+    <script src="../JS/game.js"></script>
   </body>
 </html>
