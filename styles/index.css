@@ -7,18 +7,18 @@ html {
 body {
     margin: 0;
     font-family: Montserrat, sans-serif;
-    background: #45badd;
+    background: #4991C6;
     height: 100vh;
     width: 100vw;
 }
 
 .container {
-    height: 65vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url('../resources/robot.gif');
+    background: url('../resources/jump_hello.gif');
     background-size: contain;
     background-position: center left;
     background-repeat: no-repeat;
@@ -62,7 +62,7 @@ button:disabled {
 
 
     .container {
-        background-size: cover;
+        background-size:20%;
         background-position: center center;
     }
 

@@ -10,6 +10,11 @@ const quiz = document.getElementById("quiz");
 let questions = [];
 // creating a empty array for storing copy of all the questions coming from api
 let availableQuizQuestions = [];
+// current questions object
+let currentQuizQuestion = {};
+// for delaying when someone answers a question before answering 2nd ques.
+let acceptingAnswers = false;
+// async await for fetching the questions data from opentdb api
 async function getData() {
   try {
     const response = await fetch(
@@ -44,13 +49,60 @@ async function getData() {
   }
 }
 getData();
+// constants for total questions and points on each question
+const pointOnCorrectAnswer = 10;
+const totalQuestions = 10;
 
 startQuiz = () => {
   // initializing question counter and score as 0
   questionCounter = 0;
   score = 0;
+  // copying all the question that are coming from api using spread
   availableQuizQuestions = [...questions];
+  // console.log(availableQuizQuestions);
+  // to get a new question
   getNewQuestion();
   quiz.classList.remove("hidden");
   loader.classList.add("hidden");
+};
+// console.log(questions);
+getNewQuestion = () => {
+  // if all the questions are used
+  if (
+    availableQuizQuestions.length === 0 ||
+    questionCounter >= totalQuestions
+  ) {
+    // save the most recent score to score variable
+    localStorage.setItem("mostRecentScore", score);
+    // redirects to the end page
+    return window.location.assign("./end.html");
+  }
+  questionCounter++;
+  // update the question counter text
+  progressText.innerText = `Question ${questionCounter}/${totalQuestions}`;
+  //Update the progress bar
+  progressStatus.style.width = `${(questionCounter / totalQuestions) * 100}%`;
+  // to display a random question
+  const questionIndex = Math.floor(
+    Math.random() * availableQuizQuestions.length
+  );
+  console.log(availableQuizQuestions);
+  currentQuizQuestion = availableQuizQuestions[questionIndex];
+  // console.log(currentQuizQuestion);
+  question.innerHTML = currentQuizQuestion.question;
+  // console.log(choices[0]);
+  choices.forEach((choice) => {
+    // getiing the number form Data-number
+    const number = choice.dataset["number"];
+    console.log(choice);
+    console.log(number);
+    // to get the choice
+    console.log(currentQuizQuestion);
+    choice.innerHTML = currentQuizQuestion["choice" + number + "1"];
+  });
+  // It will take the question from available questions that we have used..
+  // So that when we call getNewQuestion() function we should get a new question
+  availableQuizQuestions.splice(questionIndex, 1);
+  // console.log(availableQuizQuestions);
+  acceptingAnswers = true;
 };
