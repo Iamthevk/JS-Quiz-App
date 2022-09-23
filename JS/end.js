@@ -22,6 +22,8 @@ username.addEventListener("keyup", () => {
 
 saveHighScore = (e) => {
   // prevents from redirecting to a different page
+  e.preventDefault();
+
   const score = {
     score: mostRecentScore,
     name: username.value,
@@ -34,8 +36,8 @@ saveHighScore = (e) => {
   });
   // to add only 5 high scores
   highScores.splice(5);
-};
 
-// saving the highscores in local storage
-localStorage.setItem("highScores", JSON.stringify(highScores));
-window.location.assign("../index.html");
+  // saving the highscores in local storage
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+  window.location.assign("../index.html");
+};
