@@ -37,7 +37,7 @@ async function getData() {
         responsedQue.correct_answer
       );
       answerChoices.forEach((choice, index) => {
-        formattedQue["choice" + index + 1] = choice;
+        formattedQue["choice" + (index + 1)] = choice;
       });
       return formattedQue;
     });
@@ -86,7 +86,7 @@ getNewQuestion = () => {
   const questionIndex = Math.floor(
     Math.random() * availableQuizQuestions.length
   );
-  console.log(availableQuizQuestions);
+  // console.log(availableQuizQuestions);
   currentQuizQuestion = availableQuizQuestions[questionIndex];
   // console.log(currentQuizQuestion);
   question.innerHTML = currentQuizQuestion.question;
@@ -95,14 +95,48 @@ getNewQuestion = () => {
     // getiing the number form Data-number
     const number = choice.dataset["number"];
     console.log(choice);
-    console.log(number);
+    // console.log(number);
     // to get the choice
-    console.log(currentQuizQuestion);
-    choice.innerHTML = currentQuizQuestion["choice" + number + "1"];
+    // console.log(currentQuizQuestion);
+    choice.innerHTML = currentQuizQuestion["choice" + number];
   });
   // It will take the question from available questions that we have used..
   // So that when we call getNewQuestion() function we should get a new question
   availableQuizQuestions.splice(questionIndex, 1);
   // console.log(availableQuizQuestions);
   acceptingAnswers = true;
+};
+// grabbing each choices
+choices.forEach((choice) => {
+  choice.addEventListener("click", (e) => {
+    const selectChoice = e.target;
+    // console.log(selectChoice);
+    if (!acceptingAnswers) return;
+    acceptingAnswers = false;
+    const selectAnswer = selectChoice.dataset["number"];
+    // console.log(selectAnswer);
+    console.log(currentQuizQuestion);
+    // if answer is correct, then add the correct class, else add the incorrect css class
+    const classToApply =
+      selectAnswer == currentQuizQuestion.answer ? "correct" : "incorrect";
+    // if the answer is correct then increment the score
+    if (classToApply === "correct") {
+      incrementScore(pointOnCorrectAnswer);
+    }
+
+    // console.log(selectChoice.parentElement);
+    selectChoice.parentElement.classList.add(classToApply);
+    // for removing the the class after a question is answered
+    setTimeout(() => {
+      selectChoice.parentElement.classList.remove(classToApply);
+      // get a new question
+      getNewQuestion();
+    }, 1000);
+  });
+});
+
+// increment the score
+incrementScore = (num) => {
+  score += num;
+  scoreText.innerText = score;
 };
